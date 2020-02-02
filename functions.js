@@ -40,11 +40,35 @@ function operate(num1, num2, symbol){
 
 //add eventlisteners for every button
 
+var zero = document.querySelector('#zero');
+zero.addEventListener('click', () => appendDisplay(0));
+
+var one = document.querySelector('#one');
+one.addEventListener('click', () => appendDisplay(1));
+
 var two = document.querySelector('#two');
 two.addEventListener('click', () => appendDisplay(2));
 
 var three = document.querySelector('#three');
 three.addEventListener('click', () => appendDisplay(3));
+
+var four = document.querySelector('#four');
+four.addEventListener('click', () => appendDisplay(4));
+
+var five = document.querySelector('#five');
+five.addEventListener('click', () => appendDisplay(5));
+
+var six = document.querySelector('#six');
+six.addEventListener('click', () => appendDisplay(6));
+
+var seven = document.querySelector('#seven');
+seven.addEventListener('click', () => appendDisplay(7));
+
+var eight = document.querySelector('#eight');
+eight.addEventListener('click', () => appendDisplay(8));
+
+var nine = document.querySelector('#nine');
+nine.addEventListener('click', () => appendDisplay(9));
 
 var dot = document.querySelector('#dot');
 dot.addEventListener('click', () => appendDisplay('.'));
@@ -61,16 +85,36 @@ times.addEventListener('click', () => appendDisplay('x'));
 var division = document.querySelector('#division');
 division.addEventListener('click', () => appendDisplay('/'));
 
+var del = document.querySelector('#del');
+del.addEventListener('click', () => singleDel());
+
 var clear = document.querySelector('#cl');
+clear.addEventListener('click', () => clears());
 
 var equals = document.querySelector('#equals');
 equals.addEventListener('click', () => calculate());
 
+//variable which stores state of screen
+var screenState = "input";
+
 //append a number to the display
 function appendDisplay(input){
     var screen = document.querySelector('#screen');
-    screen.textContent += input;
+    if(screenState == "output"){
+        screen.textContent = input;
+        screenState = "input";
+    }
+    else{
+        screen.textContent += input;
+    }
     storage(input);    
+}
+
+function appendResult(input){
+    var screen = document.querySelector('#screen');
+    screen.textContent = input;
+    screenState = "output";
+    reset();
 }
 
 //calls either numstore or symstore depending on the input for storage
@@ -90,12 +134,40 @@ var currNum = 0;
 //array to store all the inputted symbols
 var symStore = [];
 
+//resets calculator
+function reset(){
+    numStore = [];
+    symstore = [];
+    currNum = 0;
+}
+
+function clears(){
+    var screen = document.querySelector('#screen');
+    screen.innerHTML = "<br>";
+    reset();
+}
+
+//deletes the last entry in the calculator
+function singleDel(){
+    if(numStore.length > symStore.length){
+        numStore.pop();
+        currNum--;
+    }
+    else{
+        symStore.pop();
+    }
+    var screen = document.querySelector('#screen');
+    screen.textContent = screen.textContent.slice(0, screen.textContent.length - 1);
+    console.log(numStore);
+    console.log(symStore);
+}
+
 //calculates the answer from given arguments
 function calculate(){
     for(var x = 0; x < numStore.length; x++){
         for(var i = 0; i < numStore.length; i++){
             if(symStore[i] == "x" || symStore[i] == "/"){
-                numStore[i] = operate(parseInt(numStore[i]), parseInt(numStore[i+1]), symStore[i]);
+                numStore[i] = operate(parseFloat(numStore[i]), parseFloat(numStore[i+1]), symStore[i]);
                 numStore.splice(i+1, 1);
                 symStore.splice(i, 1);
                 console.log(numStore);
@@ -106,7 +178,7 @@ function calculate(){
     for(var x = 0; x < numStore.length; x++){
         for(var i = 0; i < numStore.length; i++){
             if(symStore[i] == "+" || symStore[i] == "-"){
-                numStore[i] = operate(parseInt(numStore[i]), parseInt(numStore[i+1]), symStore[i]);
+                numStore[i] = operate(parseFloat(numStore[i]), parseFloat(numStore[i+1]), symStore[i]);
                 numStore.splice(i+1, 1);
                 symStore.splice(i, 1);
                 console.log(numStore);
@@ -115,6 +187,7 @@ function calculate(){
         }
     }
     console.log(numStore[0]);
+    appendResult(numStore[0]);
 }
 
 function numStorage(input){
