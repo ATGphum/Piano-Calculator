@@ -1,46 +1,67 @@
 <!DOCTYPE html>
 
 <html>
-   <head>
-      <title>Calculator</title>
-      <link rel="stylesheet" href="style.css">
+    <head>
+        <title>Calculator</title>
+        <link rel="stylesheet" href="style.css">
       
-   </head>
+    </head>
 
-   <body>
-      <div id=screen><br></div>
-      <button id=zero class=button>0</button>
-      <button id=one class=button>1</button>
-      <button id=two class=button>2</button>
-      <button id=three class=button>3</button>
-      <button id=four class=button>4</button>
-      <button id=five class=button>5</button>
-      <button id=six class=button>6</button>
-      <button id=seven class=button>7</button>
-      <button id=eight class=button>8</button>
-      <button id=nine class=button>9</button>
+    <body>
+        <div id=screenShell><p id=screen><br></p></div>
+        <div id=frame>
 
-      <button id=dot class=button>.</button>
-      <button id=plus>+</button>
-      <button id=minus>-</button>
-      <button id=times>x</button>
-      <button id=division>/</button>
-      <button id=del>del</button>
-      <button id=cl>cl</button>
-      <button id=equals>=</button>
-      <script src="functions.js">   </script>
+            <div id=firstrow>
+                <button id=cl class=buttons>cl</button>
+                <button id=del class=buttons>del</button>
+                <button id=plus class=buttons>+</button>
+            </div>
+            <div id=secondrow>
+                <button id=seven class=buttons>7</button>
+                <button id=eight class=buttons>8</button>
+                <button id=nine class=buttons>9</button>
+                <button id=minus class=buttons>-</button>
+            </div>
+            <div id=thirdrow>
+                <button id=four class=buttons>4</button>
+                <button id=five class=buttons>5</button>
+                <button id=six class=buttons>6</button>
+                <button id=times class=buttons>x</button>
+            </div>
+            <div id=fourthrow>
+                <button id=one class=buttons>1</button>
+                <button id=two class=buttons>2</button>
+                <button id=three class=buttons>3</button>
+                <button id=division class=buttons>/</button>    
+            </div>
+            <div id=fifthrow>
+                <button id=zero class=buttons>0</button>
+                <button id=dot class=buttons>.</button>
+                <button id=equals class=buttons>=</button>
+            </div>
+        </div>
 
+        <audio data-key="zero" src="sounds/d3.mp3"></audio>
+        <audio data-key="dot" src="sounds/e3.mp3"></audio>
+        <audio data-key="equals" src="sounds/f3.mp3"></audio>
+        <audio data-key="one" src="sounds/g3.mp3"></audio>
+        <audio data-key="two" src="sounds/a4.mp3"></audio>
+        <audio data-key="three" src="sounds/b4.mp3"></audio>
+        <audio data-key="division" src="sounds/c4.mp3"></audio>
+        <audio data-key="four" src="sounds/d4.mp3"></audio>
+        <audio data-key="five" src="sounds/e4.mp3"></audio>
+        <audio data-key="six" src="sounds/f4.mp3"></audio>
+        <audio data-key="times" src="sounds/g4.mp3"></audio>
+        <audio data-key="seven" src="sounds/a5.mp3"></audio>
+        <audio data-key="eight" src="sounds/b5.mp3"></audio>
+        <audio data-key="nine" src="sounds/c5.mp3"></audio>
+        <audio data-key="minus" src="sounds/d5.mp3"></audio>
+        <audio data-key="cl" src="sounds/e5.mp3"></audio>
+        <audio data-key="del" src="sounds/f5.mp3"></audio>
+        <audio data-key="plus" src="sounds/g5.mp3"></audio>
 
-   </body>
-<html>
-~                                                                                      
-~                                                                                      
-~                                                                                      
-~                                                                                      
-~                                                                                      
-~                                                                                      
-~                                                                                      
-~                                                                                      
-~                                                                                      
-~                                                                                      
-~                                
+        <script src="functions.js">   </script>
+        
+    </body>
+</html>
+       

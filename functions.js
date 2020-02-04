@@ -114,6 +114,9 @@ function appendResult(input){
     var screen = document.querySelector('#screen');
     screen.textContent = input;
     screenState = "output";
+    if(input == null){
+        screen.innerHTML = "<br>";
+    }
     reset();
 }
 
@@ -158,8 +161,9 @@ function singleDel(){
     }
     var screen = document.querySelector('#screen');
     screen.textContent = screen.textContent.slice(0, screen.textContent.length - 1);
-    console.log(numStore);
-    console.log(symStore);
+    if(screen.textContent.length == 0){
+        screen.innerHTML = "<br>"
+    }
 }
 
 //calculates the answer from given arguments
@@ -170,8 +174,6 @@ function calculate(){
                 numStore[i] = operate(parseFloat(numStore[i]), parseFloat(numStore[i+1]), symStore[i]);
                 numStore.splice(i+1, 1);
                 symStore.splice(i, 1);
-                console.log(numStore);
-                console.log(symStore);
             } 
         }
     }
@@ -181,13 +183,11 @@ function calculate(){
                 numStore[i] = operate(parseFloat(numStore[i]), parseFloat(numStore[i+1]), symStore[i]);
                 numStore.splice(i+1, 1);
                 symStore.splice(i, 1);
-                console.log(numStore);
-                console.log(symStore);
             }
         }
     }
-    console.log(numStore[0]);
-    appendResult(numStore[0]);
+    appendResult(numStore[0]); 
+    
 }
 
 function numStorage(input){
@@ -197,9 +197,6 @@ function numStorage(input){
     else{
         numStore[currNum] += input;
     }
-console.log(numStore);
-console.log(symStore);
-
 }
 
 function symStorage(input){
@@ -209,14 +206,33 @@ function symStorage(input){
     symStore[currNum] = input;
     //append to current number stored
     currNum++;
-    
-console.log(numStore);
-console.log(symStore);
 }
 
-//store the numbers in an array, forming a new element each time an operator button is pressed
+//
 
-//update the display
+window.addEventListener('click', function(e){
+    const audio = document.querySelector(`audio[data-key="${e.srcElement.id}"]`);
+    const buttons = document.querySelector(`.buttons[id="${e.srcElement.id}"]`);
+    console.log(audio);
+
+    if(audio == null){
+        return;
+    }
+    audio.currentTime = 0;
+    audio.play();
+    buttons.classList.add('buttonsPressed');
+});
+
+function removeTransition(e) {
+console.log("no");
+    if(e.propertyName !== 'transform') return;
+    this.classList.remove('buttonsPressed');
+console.log("yes");
+}
+
+const keys = document.querySelectorAll('.buttons');
+keys.forEach(buttons => buttons.addEventListener('transitionend', removeTransition));
 
 
 
+    

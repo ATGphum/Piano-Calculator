@@ -1,4 +1,63 @@
+#frame {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    margin-top: 0;
+    border-style: solid;
+    border-width: 7px;
+    padding: 10px;
+    border-top-style: none;
+    border-color: #00ffa1;
+}
+
+.buttons {
+    border-style: solid;
+    width: 55px;
+    height: 55px;
+    border-width: 7px;
+    border-color: #0088ff;
+    border-radius: 30px;
+    background-color: white;
+    margin: 5px;
+    color: #0088ff;
+    transition: all 0.08s ease;
+}
+
+.buttons:hover {
+    border-color: #ccff00;
+}
+
+.buttonsPressed {
+    border-color: #ccff00;
+    box-shadow: 0px 0px 10px 10px #ccff00;
+    transform: scale(1.3);
+}
+
+.buttons {
+    outline-style: none;
+}
+
 #screen {
-    text-align:right;
-    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: #0088ff;
+    border-color: #00ffa1;
+    width: fit-content;
+    border-style: solid;
+    padding: 10px;
+    border-width: 7px;
+    border-radius: 20px;
+    font-size: large;
+    font-weight: bold;
+    font-family: arial, sans-serif;
+    background-color: #d7faa9;
+}
+
+#plus, #equals{
+    width: 124px;
+}
+
+#cl, #del, #plus, #minus, #times, #division, #equals {
+    background-color: #feffa9;
 }
